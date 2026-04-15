@@ -7,7 +7,7 @@ function ProjectCard({ title, location, scope, year, className = '' }) {
       </div>
       <h3>{title}</h3>
       <p>{scope}</p>
-      <a href="#iletisim">Detay Talep Et</a>
+      <a href="#iletisim">Proje Detayı Talep Et</a>
     </article>
   )
 }

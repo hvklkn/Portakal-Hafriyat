@@ -3,20 +3,20 @@ import SectionTitle from '../components/SectionTitle'
 
 const highlights = [
   {
-    title: 'Operasyon Disiplini',
-    text: 'Saha akışını takvim, kaynak ve risk parametreleriyle birlikte yönetiriz.'
+    title: 'Operasyon Netliği',
+    text: 'Saha kararlarını takvime ve üretim hedeflerine göre anlık optimize ederiz.'
   },
   {
-    title: 'Süreç Şeffaflığı',
-    text: 'İlerlemeyi karar vericilere düzenli, net ve anlaşılır formatta raporlarız.'
+    title: 'Teslim Güvencesi',
+    text: 'Kaynak planı ve uygulama sırasını projenin kritik tarihlerini koruyacak şekilde kurarız.'
   },
   {
-    title: 'Çözüm Hızı',
-    text: 'Sahadaki değişkenleri hızlı analiz eder, üretimi durdurmadan aksiyon alırız.'
+    title: 'Ölçeklenebilir Ekip',
+    text: 'İhtiyaca göre büyüyebilen ekip yapısıyla farklı etapları eşzamanlı yürütebiliriz.'
   },
   {
-    title: 'Kurumsal Yaklaşım',
-    text: 'Her projede kalite, güvenlik ve maliyet dengesini birlikte gözetiriz.'
+    title: 'Kurumsal İletişim',
+    text: 'Süreç boyunca karar vericilere sade, düzenli ve ölçülebilir ilerleme çıktısı sunarız.'
   }
 ]
 
@@ -26,36 +26,36 @@ function AboutSection() {
       <div className="container about-layout">
         <div className="about-content">
           <SectionTitle
-            eyebrow="Marka Konumumuz"
-            title="Sahada güç, yönetimde netlik"
-            description="Portakal Hafriyat; ağır saha operasyonlarını yüksek standartta yöneten, güvenilir bir proje partneridir."
+            eyebrow="Marka Pozisyonu"
+            title="Ağır saha işlerinde güven duygusu üreten uygulama standardı"
+            description="Portakal Hafriyat; büyük projelerde başlangıç anından teslim gününe kadar belirsizliği azaltan operasyon kültürüyle çalışır."
           />
+
           <p>
-            Yıllardır kamu ve özel sektör projelerinde edindiğimiz saha refleksiyle, işin yalnızca uygulama tarafını
-            değil; planlama, koordinasyon ve teslim performansını da yönetiyoruz.
+            Bizim için hafriyat, yalnızca ekipman gücü değil; sıra, zaman ve saha kararlarının doğru yönetimidir. Bu
+            nedenle her projeyi teknik yeterlilik kadar yürütme kalitesiyle ele alırız.
           </p>
-          <p>
-            Hedefimiz basit: projenin ilk günü ile teslim günü arasında hiçbir belirsizlik bırakmadan, güçlü ve
-            öngörülebilir bir operasyon akışı sunmak.
+
+          <p className="about-emphasis">
+            "Güçlü ekipman kadar güçlü metodoloji." İşimizi bu ilke ile yönetir, projelerinize sürdürülebilir bir tempo
+            kazandırırız.
           </p>
         </div>
 
         <div className="about-visual">
-          <div className="about-statement">
-            <p>
-              "Doğru ekipman, doğru ekip, doğru sıra." Portakal Hafriyat için operasyon kalitesi, bu üçlü dengede
-              başlar.
-            </p>
-            <div className="about-kpis">
-              <article>
-                <strong>120+</strong>
-                <span>Aktif Kurumsal Müşteri</span>
-              </article>
-              <article>
-                <strong>11 İl</strong>
-                <span>Operasyon Kabiliyeti</span>
-              </article>
-            </div>
+          <div className="about-kpis">
+            <article>
+              <strong>120+</strong>
+              <span>Kurumsal İş Ortağı</span>
+            </article>
+            <article>
+              <strong>11 İl</strong>
+              <span>Aktif Operasyon Kabiliyeti</span>
+            </article>
+            <article>
+              <strong>24/7</strong>
+              <span>Proje İletişim Desteği</span>
+            </article>
           </div>
 
           <div className="about-highlights">

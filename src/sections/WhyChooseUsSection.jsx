@@ -3,20 +3,20 @@ import SectionTitle from '../components/SectionTitle'
 
 const steps = [
   {
-    title: 'Saha Analizi ve Keşif',
-    description: 'Projeyi başlamadan önce zemin, erişim ve risk parametreleriyle teknik olarak haritalarız.'
+    title: 'Saha Etüdü',
+    description: 'Proje başlamadan önce zemin, erişim ve risk başlıklarını netleştiririz.'
   },
   {
-    title: 'Operasyon Tasarımı',
-    description: 'Ekipman, ekip ve takvim planını proje hedeflerine göre net bir yürütme modeline dönüştürürüz.'
+    title: 'Operasyon Kurgusu',
+    description: 'Ekipman, ekip ve etap planını tek bir uygulama ritmine dönüştürürüz.'
   },
   {
-    title: 'Disiplinli Uygulama',
-    description: 'Sahada güvenlik, kalite ve hız dengesini koruyarak uygulamayı kesintisiz sürdürürüz.'
+    title: 'Canlı Saha Yönetimi',
+    description: 'İlerlemeyi sahadan gelen verilerle anlık izler, kritik kararları geciktirmeyiz.'
   },
   {
-    title: 'Teslim ve Raporlama',
-    description: 'İşi sadece bitirmeyiz; süreç çıktısını ölçülebilir raporlarla kurumsal olarak teslim ederiz.'
+    title: 'Kurumsal Teslim',
+    description: 'İşin sonunda yalnızca sahayı değil, sürecin tamamını raporlanmış şekilde teslim ederiz.'
   }
 ]
 
@@ -27,23 +27,18 @@ function WhyChooseUsSection() {
         <div className="process-intro">
           <SectionTitle
             eyebrow="Çalışma Metodumuz"
-            title="Kontrollü süreç, öngörülebilir sonuç"
-            description="Her işte aynı yaklaşımı uygularız: belirsizliği azaltan planlama, kararlı uygulama, güçlü teslim."
+            title="Öngörülebilir süreç, güçlü sonuç"
+            description="Belirsizliği azaltan dört adımlı modelimiz, büyük ölçekli operasyonları yönetilebilir hale getirir."
           />
           <p>
-            Bu metodoloji sayesinde proje ekipleri, sahadaki ilerlemeyi anlık takip eder ve kritik kararları gecikmeden
-            alabilir.
+            Bu yaklaşım sayesinde proje sahipleri, sahada ne zaman ne olacağını net bilir; ekipler ise aynı hedefte
+            hizalanır.
           </p>
         </div>
 
         <div className="process-grid">
           {steps.map((step, index) => (
-            <AdvantageCard
-              key={step.title}
-              step={index + 1}
-              title={step.title}
-              description={step.description}
-            />
+            <AdvantageCard key={step.title} step={index + 1} title={step.title} description={step.description} />
           ))}
         </div>
       </div>
