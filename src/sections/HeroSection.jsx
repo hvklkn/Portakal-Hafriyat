@@ -1,47 +1,73 @@
 import StatCard from '../components/StatCard'
 
 const stats = [
-  { value: '18+', label: 'Yıllık Sektör Deneyimi' },
-  { value: '450+', label: 'Tamamlanan Proje' },
-  { value: '%98', label: 'Zamanında Teslim Oranı' }
+  { value: '20+', label: 'Yıllık Sektör Deneyimi' },
+  { value: '24 Saat', label: 'Hızlı Keşif ve Geri Dönüş' },
+  { value: '%98', label: 'Zamanında Teslim Başarısı' },
+  { value: '400+', label: 'Kurumsal Proje Desteği' }
+]
+
+const trustPoints = [
+  'Uzman ekip, modern makine parkı',
+  'Güvenlik ve mevzuata tam uyum',
+  'Şeffaf raporlama ve güçlü koordinasyon'
 ]
 
 function HeroSection() {
   return (
     <section id="anasayfa" className="hero">
-      <div className="hero-bg-shape" aria-hidden="true" />
+      <div className="hero-surface" aria-hidden="true" />
+      <div className="hero-pattern" aria-hidden="true" />
+
       <div className="container hero-grid">
         <div className="hero-content">
-          <p className="eyebrow">Kurumsal Hafriyat Çözümleri</p>
-          <h1>
-            Portakal Hafriyat ile projelerinize
-            <span> güçlü bir başlangıç</span>
-          </h1>
-          <p>
-            Büyük ölçekli kazı, yıkım ve altyapı hazırlık süreçlerini; doğru ekipman, uzman saha yönetimi ve
-            net raporlama ile güvenle yönetiyoruz.
+          <p className="eyebrow">Portakal Hafriyat</p>
+          <h1>Projeleriniz için güven veren, hızlı ve profesyonel saha başlangıcı</h1>
+          <p className="hero-subtitle">
+            Kazı, yıkım ve altyapı hazırlık süreçlerinizi; tecrübeli kadromuz, planlı operasyon yönetimimiz ve
+            zamanında teslim anlayışımızla kurumsal standartta yönetiyoruz.
           </p>
+
           <div className="hero-actions">
             <a className="btn" href="#iletisim">
-              Hemen Teklif Al
+              Teklif Al
             </a>
             <a className="btn btn-ghost" href="#hizmetler">
-              Hizmetleri İncele
+              Hizmetlerimizi İncele
             </a>
           </div>
-        </div>
 
-        <div className="hero-panel">
-          <p>Operasyonel Avantajlar</p>
-          <ul>
-            <li>Modern makine parkı ve sertifikalı operatörler</li>
-            <li>Güvenlik öncelikli saha planlaması</li>
-            <li>Şeffaf süreç takibi ve düzenli raporlama</li>
+          <ul className="hero-trust-list" aria-label="Güven göstergeleri">
+            {trustPoints.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
         </div>
+
+        <aside className="hero-visual" aria-label="Portakal Hafriyat operasyonel yaklaşımı">
+          <div className="hero-visual-tag">Aktif Saha Planlama</div>
+          <div className="hero-visual-card">
+            <p className="hero-visual-title">Kurumsal Operasyon Çerçevesi</p>
+            <p>
+              Her projede risk analizi, ekipman planı ve etaplandırılmış iş programı ile işin başından teslimine
+              kadar kontrolü tek merkezde tutuyoruz.
+            </p>
+          </div>
+
+          <div className="hero-visual-grid">
+            <article>
+              <strong>Aynı Gün Keşif</strong>
+              <span>Hızlı saha değerlendirmesi ve net teklif süreci</span>
+            </article>
+            <article>
+              <strong>Tek Nokta İletişim</strong>
+              <span>Proje boyunca düzenli bilgi akışı ve koordinasyon</span>
+            </article>
+          </div>
+        </aside>
       </div>
 
-      <div className="container stats-grid">
+      <div className="container stats-grid hero-stats">
         {stats.map((item) => (
           <StatCard key={item.label} value={item.value} label={item.label} />
         ))}
