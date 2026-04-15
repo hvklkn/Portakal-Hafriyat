@@ -1,31 +1,71 @@
+import AdvantageCard from '../components/AdvantageCard'
 import SectionTitle from '../components/SectionTitle'
 
 const reasons = [
-  'Sözleşmeye uygun iş programı ve zamanında teslim yaklaşımı',
-  'Güvenlik, kalite ve çevre yönetmeliğine uyumlu operasyon disiplini',
-  'Farklı ölçeklerde projelere adapte olabilen esnek ekip ve ekipman gücü',
-  'Saha ilerleyişini görünür kılan düzenli raporlama ve hızlı geri dönüş'
+  {
+    icon: 'time',
+    title: 'Zamanında Teslim Disiplini',
+    description:
+      'İş programına bağlı ilerleme ve saha koordinasyonu ile proje takvimine uygun teslim performansı sağlarız.'
+  },
+  {
+    icon: 'shield',
+    title: 'Güvenilir Operasyon Yönetimi',
+    description:
+      'İş güvenliği ve kalite standartlarına uyumlu süreç tasarımıyla saha operasyonlarını kontrollü şekilde yürütürüz.'
+  },
+  {
+    icon: 'machine',
+    title: 'Modern Ekipman Gücü',
+    description:
+      'Güncel makine parkımız sayesinde farklı zemin ve saha koşullarında verimli, kesintisiz çalışma kapasitesi sunarız.'
+  },
+  {
+    icon: 'team',
+    title: 'Uzman Kadro',
+    description:
+      'Tecrübeli operatörler ve teknik ekiplerimizle projeye uygun uygulama kararlarını hızlı ve doğru şekilde alırız.'
+  },
+  {
+    icon: 'solution',
+    title: 'Çözüm Odaklı Yaklaşım',
+    description:
+      'Sahadaki değişken koşullara hızlı uyum sağlayarak süreci aksatmadan alternatif planlar üretiriz.'
+  },
+  {
+    icon: 'experience',
+    title: 'Saha Deneyimi',
+    description:
+      'Yıllara yayılan proje tecrübemizle olası riskleri önden görür, maliyet ve zaman yönetiminde öngörü sunarız.'
+  }
 ]
 
 function WhyChooseUsSection() {
   return (
-    <section id="neden-biz" className="section">
-      <div className="container split-layout reverse">
-        <div className="accent-panel">
-          <p>Portakal Hafriyat, yalnızca uygulama değil; planlama ve risk yönetimi partnerinizdir.</p>
+    <section id="neden-biz" className="section section-soft why-section">
+      <div className="container">
+        <SectionTitle
+          eyebrow="Neden Biz?"
+          title="Projelerinizde güvenilir performans sağlayan operasyon partneri"
+          description="Portakal Hafriyat; teknik doğruluk, güçlü saha koordinasyonu ve çözüm odaklı yaklaşımıyla projelerinizi güvenle destekler."
+        />
+
+        <div className="why-intro-card">
+          <p>
+            Amacımız yalnızca işi tamamlamak değil; işin her aşamasında size öngörülebilir süreç, net iletişim ve
+            sürdürülebilir kalite sunmaktır.
+          </p>
         </div>
 
-        <div>
-          <SectionTitle
-            eyebrow="Neden Biz"
-            title="Kurumsal projeler için güvenilir saha ortağı"
-            description="Operasyonel doğruluk ve sürdürülebilir iş akışıyla projelerinizin takvimine güç katıyoruz."
-          />
-          <ul className="check-list">
-            {reasons.map((reason) => (
-              <li key={reason}>{reason}</li>
-            ))}
-          </ul>
+        <div className="why-grid">
+          {reasons.map((reason) => (
+            <AdvantageCard
+              key={reason.title}
+              icon={reason.icon}
+              title={reason.title}
+              description={reason.description}
+            />
+          ))}
         </div>
       </div>
     </section>
