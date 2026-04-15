@@ -1,7 +1,8 @@
 import Navbar from './components/Navbar'
-import Footer from './sections/Footer'
 import AboutSection from './sections/AboutSection'
 import ContactCtaSection from './sections/ContactCtaSection'
+import ContactSection from './sections/ContactSection'
+import Footer from './sections/Footer'
 import HeroSection from './sections/HeroSection'
 import ProjectsSection from './sections/ProjectsSection'
 import ServicesSection from './sections/ServicesSection'
@@ -18,6 +19,7 @@ function App() {
         <WhyChooseUsSection />
         <ProjectsSection />
         <ContactCtaSection />
+        <ContactSection />
       </main>
       <Footer />
     </>

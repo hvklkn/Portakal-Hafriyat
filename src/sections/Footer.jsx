@@ -1,21 +1,17 @@
 function Footer() {
   return (
     <footer className="site-footer">
-      <div className="container footer-grid">
+      <div className="container footer-shell">
         <div>
-          <h3>Portakal Hafriyat</h3>
-          <p>Güvenilir hafriyat, yıkım ve altyapı operasyonlarında kurumsal çözüm ortağınız.</p>
+          <p className="footer-brand">Portakal Hafriyat</p>
+          <p>Kurumsal hafriyat operasyonlarında güçlü planlama, kararlı uygulama ve güvenilir teslim.</p>
         </div>
-        <div>
-          <h4>İletişim</h4>
-          <p>Telefon: +90 555 111 22 33</p>
-          <p>E-posta: info@portakalhafriyat.com</p>
-        </div>
-        <div>
-          <h4>Adres</h4>
-          <p>İstanbul, Türkiye</p>
-          <p>Hafta içi 08:30 - 18:00</p>
-        </div>
+        <nav className="footer-links" aria-label="Footer menü">
+          <a href="#hakkimizda">Hakkımızda</a>
+          <a href="#hizmetler">Hizmetler</a>
+          <a href="#projeler">Projeler</a>
+          <a href="#iletisim">İletişim</a>
+        </nav>
       </div>
       <div className="container footer-bottom">
         <small>© {new Date().getFullYear()} Portakal Hafriyat. Tüm hakları saklıdır.</small>

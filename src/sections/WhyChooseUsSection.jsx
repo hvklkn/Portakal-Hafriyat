@@ -1,69 +1,48 @@
 import AdvantageCard from '../components/AdvantageCard'
 import SectionTitle from '../components/SectionTitle'
 
-const reasons = [
+const steps = [
   {
-    icon: 'time',
-    title: 'Zamanında Teslim Disiplini',
-    description:
-      'İş programına bağlı ilerleme ve saha koordinasyonu ile proje takvimine uygun teslim performansı sağlarız.'
+    title: 'Saha Analizi ve Keşif',
+    description: 'Projeyi başlamadan önce zemin, erişim ve risk parametreleriyle teknik olarak haritalarız.'
   },
   {
-    icon: 'shield',
-    title: 'Güvenilir Operasyon Yönetimi',
-    description:
-      'İş güvenliği ve kalite standartlarına uyumlu süreç tasarımıyla saha operasyonlarını kontrollü şekilde yürütürüz.'
+    title: 'Operasyon Tasarımı',
+    description: 'Ekipman, ekip ve takvim planını proje hedeflerine göre net bir yürütme modeline dönüştürürüz.'
   },
   {
-    icon: 'machine',
-    title: 'Modern Ekipman Gücü',
-    description:
-      'Güncel makine parkımız sayesinde farklı zemin ve saha koşullarında verimli, kesintisiz çalışma kapasitesi sunarız.'
+    title: 'Disiplinli Uygulama',
+    description: 'Sahada güvenlik, kalite ve hız dengesini koruyarak uygulamayı kesintisiz sürdürürüz.'
   },
   {
-    icon: 'team',
-    title: 'Uzman Kadro',
-    description:
-      'Tecrübeli operatörler ve teknik ekiplerimizle projeye uygun uygulama kararlarını hızlı ve doğru şekilde alırız.'
-  },
-  {
-    icon: 'solution',
-    title: 'Çözüm Odaklı Yaklaşım',
-    description:
-      'Sahadaki değişken koşullara hızlı uyum sağlayarak süreci aksatmadan alternatif planlar üretiriz.'
-  },
-  {
-    icon: 'experience',
-    title: 'Saha Deneyimi',
-    description:
-      'Yıllara yayılan proje tecrübemizle olası riskleri önden görür, maliyet ve zaman yönetiminde öngörü sunarız.'
+    title: 'Teslim ve Raporlama',
+    description: 'İşi sadece bitirmeyiz; süreç çıktısını ölçülebilir raporlarla kurumsal olarak teslim ederiz.'
   }
 ]
 
 function WhyChooseUsSection() {
   return (
-    <section id="neden-biz" className="section section-soft why-section">
-      <div className="container">
-        <SectionTitle
-          eyebrow="Neden Biz?"
-          title="Projelerinizde güvenilir performans sağlayan operasyon partneri"
-          description="Portakal Hafriyat; teknik doğruluk, güçlü saha koordinasyonu ve çözüm odaklı yaklaşımıyla projelerinizi güvenle destekler."
-        />
-
-        <div className="why-intro-card">
+    <section id="surec" className="section process-scene">
+      <div className="container process-layout">
+        <div className="process-intro">
+          <SectionTitle
+            eyebrow="Çalışma Metodumuz"
+            title="Kontrollü süreç, öngörülebilir sonuç"
+            description="Her işte aynı yaklaşımı uygularız: belirsizliği azaltan planlama, kararlı uygulama, güçlü teslim."
+          />
           <p>
-            Amacımız yalnızca işi tamamlamak değil; işin her aşamasında size öngörülebilir süreç, net iletişim ve
-            sürdürülebilir kalite sunmaktır.
+            Bu metodoloji sayesinde proje ekipleri, sahadaki ilerlemeyi anlık takip eder ve kritik kararları gecikmeden
+            alabilir.
           </p>
         </div>
 
-        <div className="why-grid">
-          {reasons.map((reason) => (
+        <div className="process-grid">
+          {steps.map((step, index) => (
             <AdvantageCard
-              key={reason.title}
-              icon={reason.icon}
-              title={reason.title}
-              description={reason.description}
+              key={step.title}
+              step={index + 1}
+              title={step.title}
+              description={step.description}
             />
           ))}
         </div>

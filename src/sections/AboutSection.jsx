@@ -1,78 +1,65 @@
 import AboutHighlightCard from '../components/AboutHighlightCard'
 import SectionTitle from '../components/SectionTitle'
 
-const aboutHighlights = [
+const highlights = [
   {
-    title: 'Hizmet Disiplini',
-    text: 'Planlanan iş programına bağlı kalarak sahada düzenli, kontrollü ve kesintisiz operasyon yürütürüz.'
+    title: 'Operasyon Disiplini',
+    text: 'Saha akışını takvim, kaynak ve risk parametreleriyle birlikte yönetiriz.'
   },
   {
-    title: 'Derin Saha Tecrübesi',
-    text: 'Farklı ölçeklerdeki projelerde edinilen uygulama deneyimi ile riskleri önceden öngörürüz.'
+    title: 'Süreç Şeffaflığı',
+    text: 'İlerlemeyi karar vericilere düzenli, net ve anlaşılır formatta raporlarız.'
   },
   {
-    title: 'Operasyonel Güvenilirlik',
-    text: 'Makine, ekip ve süreç koordinasyonunu tek merkezden yöneterek teslim sürelerinde istikrar sağlarız.'
+    title: 'Çözüm Hızı',
+    text: 'Sahadaki değişkenleri hızlı analiz eder, üretimi durdurmadan aksiyon alırız.'
   },
   {
-    title: 'Müşteri Odaklı Yaklaşım',
-    text: 'Her proje için ihtiyaç analizi yapar, hızlı geri dönüş ve şeffaf iletişimle karar süreçlerini kolaylaştırırız.'
+    title: 'Kurumsal Yaklaşım',
+    text: 'Her projede kalite, güvenlik ve maliyet dengesini birlikte gözetiriz.'
   }
 ]
 
 function AboutSection() {
   return (
-    <section id="hakkimizda" className="section about-section">
-      <div className="container about-grid">
+    <section id="hakkimizda" className="section about-scene">
+      <div className="container about-layout">
         <div className="about-content">
           <SectionTitle
-            eyebrow="Hakkımızda"
-            title="Sahada disiplinli, çözümde hızlı ve sonuç odaklı bir iş ortağı"
-            description="Portakal Hafriyat, kazıdan saha hazırlığına kadar tüm süreçleri planlı operasyon ve güçlü teknik koordinasyon ile yönetir."
+            eyebrow="Marka Konumumuz"
+            title="Sahada güç, yönetimde netlik"
+            description="Portakal Hafriyat; ağır saha operasyonlarını yüksek standartta yöneten, güvenilir bir proje partneridir."
           />
-
           <p>
-            Kurulduğumuz günden bu yana kamu ve özel sektör projelerinde; güvenlik, kalite ve zaman yönetimini
-            birlikte ele alan bir çalışma sistemi benimsiyoruz. Projeyi sadece uygulama açısından değil, süreç
-            yönetimi ve risk kontrolü perspektifiyle de değerlendiriyoruz.
+            Yıllardır kamu ve özel sektör projelerinde edindiğimiz saha refleksiyle, işin yalnızca uygulama tarafını
+            değil; planlama, koordinasyon ve teslim performansını da yönetiyoruz.
           </p>
           <p>
-            Her sahada amacımız nettir: doğru ekipman, uzman kadro ve ölçülebilir iş takibiyle müşterilerimize
-            öngörülebilir, güvenilir ve sürdürülebilir bir operasyon deneyimi sunmak.
+            Hedefimiz basit: projenin ilk günü ile teslim günü arasında hiçbir belirsizlik bırakmadan, güçlü ve
+            öngörülebilir bir operasyon akışı sunmak.
           </p>
-
-          <div className="about-signature" aria-label="Kurumsal taahhütler">
-            <span>Teknik doğruluk</span>
-            <span>Zamanında teslim</span>
-            <span>Şeffaf iletişim</span>
-          </div>
         </div>
 
-        <div className="about-side">
-          <div className="about-story-card">
-            <p className="about-story-title">Kurumsal Operasyon Yaklaşımımız</p>
+        <div className="about-visual">
+          <div className="about-statement">
             <p>
-              Proje başlangıcında saha keşfi, risk analizi ve etap planlaması yapar; uygulama süresince ilerlemeyi
-              düzenli raporlayarak sürecin her adımını görünür tutarız.
+              "Doğru ekipman, doğru ekip, doğru sıra." Portakal Hafriyat için operasyon kalitesi, bu üçlü dengede
+              başlar.
             </p>
-            <div className="about-story-stats">
+            <div className="about-kpis">
               <article>
-                <strong>450+</strong>
-                <span>Tamamlanan İş</span>
+                <strong>120+</strong>
+                <span>Aktif Kurumsal Müşteri</span>
               </article>
               <article>
-                <strong>%98</strong>
-                <span>Zamanında Teslim</span>
-              </article>
-              <article>
-                <strong>20+</strong>
-                <span>Yıllık Deneyim</span>
+                <strong>11 İl</strong>
+                <span>Operasyon Kabiliyeti</span>
               </article>
             </div>
           </div>
 
-          <div className="about-highlights-grid">
-            {aboutHighlights.map((item) => (
+          <div className="about-highlights">
+            {highlights.map((item) => (
               <AboutHighlightCard key={item.title} title={item.title} text={item.text} />
             ))}
           </div>

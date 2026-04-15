@@ -1,21 +1,19 @@
 function ContactCtaSection() {
   return (
-    <section id="iletisim" className="section">
-      <div className="container cta-wrap">
-        <div>
-          <p className="eyebrow">İletişim</p>
-          <h2>Projeniz için net, hızlı ve güvenilir bir teklif alın</h2>
-          <p>
-            İhtiyacınızı paylaşın, teknik ekibimiz en uygun saha çözümünü kısa sürede planlayıp size özel teklif
-            oluştursun.
-          </p>
-        </div>
+    <section id="teklif" className="section cta-scene">
+      <div className="container cta-panel">
+        <p className="eyebrow">Teklif ve Planlama</p>
+        <h2>Sahaya çıkmadan önce doğru planı birlikte kuralım.</h2>
+        <p>
+          Projenizin kapsamını paylaşın. Teknik ekibimiz kısa sürede saha modelinizi oluşturup net bir yol haritası
+          sunsun.
+        </p>
         <div className="cta-actions">
-          <a className="btn" href="tel:+905551112233">
-            +90 555 111 22 33
+          <a className="btn" href="#iletisim">
+            Projeyi Başlat
           </a>
-          <a className="btn btn-ghost" href="mailto:info@portakalhafriyat.com">
-            info@portakalhafriyat.com
+          <a className="btn btn-outline" href="https://wa.me/905551112233" target="_blank" rel="noreferrer">
+            WhatsApp ile İletişim
           </a>
         </div>
       </div>

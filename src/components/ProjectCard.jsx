@@ -1,9 +1,13 @@
-function ProjectCard({ title, location, scope }) {
+function ProjectCard({ title, location, scope, year, className = '' }) {
   return (
-    <article className="card project-card">
-      <p className="project-location">{location}</p>
+    <article className={`project-item ${className}`.trim()}>
+      <div className="project-meta">
+        <span>{location}</span>
+        <span>{year}</span>
+      </div>
       <h3>{title}</h3>
       <p>{scope}</p>
+      <a href="#iletisim">Detay Talep Et</a>
     </article>
   )
 }

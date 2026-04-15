@@ -3,36 +3,36 @@ import ServiceCard from '../components/ServiceCard'
 
 const services = [
   {
-    title: 'Kazı ve Dolgu Uygulamaları',
-    text: 'Proje ihtiyacına uygun hassas kazı, malzeme yönetimi ve kontrollü dolgu operasyonları.'
+    title: 'Kazı ve Dolgu Yönetimi',
+    text: 'Zemin koşuluna uygun teknikle kazı, taşıma ve dolgu süreçlerini kontrollü biçimde yürütürüz.'
   },
   {
-    title: 'Yıkım ve Saha Temizliği',
-    text: 'Mevzuata uyumlu yıkım planlaması, atık ayrıştırma ve güvenli saha temizleme süreçleri.'
+    title: 'Yıkım ve Saha Dönüşümü',
+    text: 'Yıkım operasyonunu güvenlik protokollerine bağlı, çevresel etkileri yöneterek tamamlarız.'
   },
   {
-    title: 'Altyapı Hazırlık Çalışmaları',
-    text: 'Yol, bina ve endüstriyel tesis projeleri için zemini teknik gereksinimlere uygun hale getirme.'
+    title: 'Altyapı Ön Hazırlık',
+    text: 'Yol, tesis ve yapı projeleri için zemini uygulama ekiplerine hazır hale getiririz.'
   },
   {
-    title: 'Nakliye ve Lojistik Yönetimi',
-    text: 'Malzeme sevkiyatı ve operasyon akışının kesintisiz ilerlemesi için güçlü saha lojistiği.'
+    title: 'Lojistik ve Hafriyat Nakli',
+    text: 'Sahadaki malzeme hareketini aksamasız planlar, iş programını hızlandırırız.'
   }
 ]
 
 function ServicesSection() {
   return (
-    <section id="hizmetler" className="section section-soft">
-      <div className="container">
+    <section id="hizmetler" className="section services-scene">
+      <div className="container services-layout">
         <SectionTitle
           eyebrow="Hizmetler"
-          title="Projeye değer katan uçtan uca saha hizmetleri"
-          description="Teknik kapasitemiz ve tecrübeli ekiplerimizle operasyonlarınızı hızlandıran çözümler sunuyoruz."
+          title="Geniş ölçekte saha operasyonu, tek kalite standardı"
+          description="Hizmet kalemlerimizi proje hedeflerinize göre ölçeklendirir, sahayı iş programına hazır teslim ederiz."
         />
 
-        <div className="card-grid">
-          {services.map((service) => (
-            <ServiceCard key={service.title} title={service.title} text={service.text} />
+        <div className="services-list">
+          {services.map((item, index) => (
+            <ServiceCard key={item.title} index={index + 1} title={item.title} text={item.text} />
           ))}
         </div>
       </div>

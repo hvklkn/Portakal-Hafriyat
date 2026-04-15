@@ -13,21 +13,27 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 16)
-    }
+    const onScroll = () => setIsScrolled(window.scrollY > 18)
 
-    handleScroll()
-    window.addEventListener('scroll', handleScroll, { passive: true })
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scroll', onScroll)
     }
   }, [])
 
   useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : ''
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
+  useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 820) {
+      if (window.innerWidth > 920) {
         setIsOpen(false)
       }
     }
@@ -50,47 +56,46 @@ function Navbar() {
   const closeMenu = () => setIsOpen(false)
 
   return (
-    <header className={`site-header ${isScrolled ? 'is-scrolled' : ''}`}>
-      <div className="container nav-wrap">
-        <a className="brand" href="#anasayfa" aria-label="Portakal Hafriyat Ana Sayfa">
+    <header className={`editorial-header ${isScrolled ? 'scrolled' : ''}`}>
+      <div className="container nav-shell">
+        <a className="brand" href="#anasayfa" aria-label="Portakal Hafriyat ana sayfa">
           <span className="brand-mark" aria-hidden="true">
             PH
           </span>
-          <div>
+          <span className="brand-copy">
             <strong>Portakal Hafriyat</strong>
-            <small>Kurumsal Hafriyat ve Altyapı Çözümleri</small>
-          </div>
+            <small>Disiplinli Saha Operasyonları</small>
+          </span>
         </a>
 
         <button
           className={`nav-toggle ${isOpen ? 'open' : ''}`}
-          aria-controls="site-navigation"
+          type="button"
           aria-expanded={isOpen}
+          aria-controls="site-navigation"
           aria-label={isOpen ? 'Menüyü kapat' : 'Menüyü aç'}
           onClick={() => setIsOpen((prev) => !prev)}
-          type="button"
         >
-          <span />
           <span />
           <span />
         </button>
 
-        <nav id="site-navigation" className={`site-nav ${isOpen ? 'open' : ''}`}>
+        <nav id="site-navigation" className={`nav-menu ${isOpen ? 'open' : ''}`}>
           {navItems.map((item) => (
             <a key={item.href} href={item.href} onClick={closeMenu}>
               {item.label}
             </a>
           ))}
-          <a className="btn btn-sm nav-cta" href="#iletisim" onClick={closeMenu}>
+          <a className="btn btn-sm" href="#teklif" onClick={closeMenu}>
             Teklif Al
           </a>
         </nav>
 
         <button
-          aria-label="Menü dışına tıklayarak kapat"
-          className={`nav-overlay ${isOpen ? 'open' : ''}`}
-          onClick={closeMenu}
           type="button"
+          aria-label="Mobil menüyü kapat"
+          className={`menu-backdrop ${isOpen ? 'open' : ''}`}
+          onClick={closeMenu}
         />
       </div>
     </header>

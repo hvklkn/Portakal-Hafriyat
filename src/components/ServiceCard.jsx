@@ -1,8 +1,13 @@
-function ServiceCard({ title, text }) {
+function ServiceCard({ index, title, text }) {
   return (
-    <article className="card service-card">
-      <h3>{title}</h3>
-      <p>{text}</p>
+    <article className="service-row">
+      <span className="service-index" aria-hidden="true">
+        {String(index).padStart(2, '0')}
+      </span>
+      <div>
+        <h3>{title}</h3>
+        <p>{text}</p>
+      </div>
     </article>
   )
 }

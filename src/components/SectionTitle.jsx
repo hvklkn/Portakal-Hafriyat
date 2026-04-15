@@ -1,10 +1,10 @@
-function SectionTitle({ eyebrow, title, description }) {
+function SectionTitle({ eyebrow, title, description, align = 'left' }) {
   return (
-    <div className="section-title">
+    <header className={`section-title ${align === 'center' ? 'center' : ''}`}>
       <p className="eyebrow">{eyebrow}</p>
       <h2>{title}</h2>
-      <p>{description}</p>
-    </div>
+      {description ? <p>{description}</p> : null}
+    </header>
   )
 }
 

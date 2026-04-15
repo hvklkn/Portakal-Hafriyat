@@ -3,39 +3,51 @@ import SectionTitle from '../components/SectionTitle'
 
 const projects = [
   {
-    title: 'Lojistik Depo Sahası Altyapı Hazırlığı',
+    title: 'Kuzey Marmara Lojistik Üssü Saha Hazırlığı',
     location: 'İstanbul',
-    scope: 'Geniş alan kazı, zemin düzenleme ve etaplı dolgu uygulamaları başarıyla tamamlandı.'
+    year: '2025',
+    scope: '120.000 m² alanda etaplı kazı, dolgu ve ağır ekipman geçiş altyapısı uygulandı.',
+    className: 'featured'
   },
   {
-    title: 'Kentsel Dönüşüm Yıkım ve Temizleme',
+    title: 'Gebze Endüstriyel Dönüşüm Operasyonu',
     location: 'Kocaeli',
-    scope: 'Kontrollü yıkım, atık yönetimi ve yeni yapı sürecine uygun saha teslimi gerçekleştirildi.'
+    year: '2024',
+    scope: 'Yıkım sonrası yeni tesis kurulumuna uygun, takvime bağlı saha temizliği tamamlandı.'
   },
   {
-    title: 'Sanayi Tesisi Saha İyileştirme',
+    title: 'Bursa Üretim Kampüsü Altyapı Açılımı',
     location: 'Bursa',
-    scope: 'Yoğun iş programına uygun hızlı operasyon ile üretim takvimi kesintisiz desteklendi.'
+    year: '2024',
+    scope: 'Yoğun üretim takvimine paralel, kesintisiz saha genişletme ve zemin hazırlığı yürütüldü.'
+  },
+  {
+    title: 'Ankara Karma Proje Zemin Stabilizasyonu',
+    location: 'Ankara',
+    year: '2023',
+    scope: 'Farklı etaplarda paralel operasyon yönetimi ile yüksek hacimli hafriyat süreci yönetildi.'
   }
 ]
 
 function ProjectsSection() {
   return (
-    <section id="projeler" className="section section-soft">
+    <section id="projeler" className="section projects-scene">
       <div className="container">
         <SectionTitle
-          eyebrow="Projeler"
-          title="Farklı ölçeklerde tamamlanan saha çalışmaları"
-          description="Sektör gereksinimlerine uygun, ölçülebilir sonuçlar üreten proje deneyimlerimizden örnekler."
+          eyebrow="Seçili Projeler"
+          title="Büyük ölçekli işlerde test edilmiş operasyon kabiliyeti"
+          description="Farklı şehirlerde, farklı koşullarda aynı standart: kontrollü ilerleme ve güçlü teslim performansı."
         />
 
-        <div className="card-grid projects-grid">
+        <div className="projects-showcase">
           {projects.map((project) => (
             <ProjectCard
               key={project.title}
+              className={project.className}
               title={project.title}
               location={project.location}
               scope={project.scope}
+              year={project.year}
             />
           ))}
         </div>
