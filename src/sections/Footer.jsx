@@ -4,7 +4,7 @@ function Footer() {
       <div className="container footer-shell">
         <div>
           <p className="footer-brand">Portakal Hafriyat</p>
-          <p>Ağır saha operasyonlarında yüksek standartlı planlama, uygulama ve teslim disiplini.</p>
+          <p>Ağır saha operasyonlarında ölçekli, kontrollü ve güvenilir icra.</p>
         </div>
         <nav className="footer-links" aria-label="Footer menü">
           <a href="#anasayfa">Anasayfa</a>

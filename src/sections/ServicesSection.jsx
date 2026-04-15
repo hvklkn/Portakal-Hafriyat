@@ -4,19 +4,19 @@ import ServiceCard from '../components/ServiceCard'
 const services = [
   {
     title: 'Kazı ve Dolgu Yönetimi',
-    text: 'Zemin karakterine göre kazı, taşıma ve dolgu sırasını teknik kontrol altında yürütürüz.'
+    text: 'Kazı, taşıma ve dolgu akışını zemine göre optimize ederiz.'
   },
   {
     title: 'Yıkım ve Saha Dönüşümü',
-    text: 'Yıkım sonrası sahayı yeni uygulama ekiplerine hazır, temiz ve güvenli şekilde teslim ederiz.'
+    text: 'Yıkımı güvenlik ve hız dengesini koruyarak tamamlarız.'
   },
   {
     title: 'Altyapı Ön Hazırlık',
-    text: 'Yol, depo, tesis ve karma projelerde zemini uygulama takvimine uygun hale getiririz.'
+    text: 'Altyapı ekipleri için zemini eksiksiz ve hazır teslim ederiz.'
   },
   {
     title: 'Hafriyat Lojistiği',
-    text: 'Malzeme hareketini optimize ederek sahada bekleme sürelerini ve maliyet baskısını azaltırız.'
+    text: 'Saha lojistiğini akışı yavaşlatmadan yönetiriz.'
   }
 ]
 
@@ -25,9 +25,9 @@ function ServicesSection() {
     <section id="hizmetler" className="section services-scene">
       <div className="container services-layout">
         <SectionTitle
-          eyebrow="Operasyon Alanlarımız"
-          title="Geniş ölçekte saha hizmeti, rafine uygulama disiplini"
-          description="Her hizmet başlığında aynı yaklaşım: doğru sıra, yüksek kontrol, temiz teslim."
+          eyebrow="Hizmet Çerçevesi"
+          title="Operasyonu büyütürken kaliteyi sabit tutarız"
+          description="Dört ana hatta, tek uygulama standardı."
         />
 
         <div className="services-list">

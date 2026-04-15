@@ -1,10 +1,10 @@
 import StatCard from '../components/StatCard'
 
 const metrics = [
-  { value: '20+', label: 'Yıllık Saha Hafızası' },
+  { value: '20+', label: 'Yıl Saha Tecrübesi' },
   { value: '600+', label: 'Tamamlanan Operasyon' },
   { value: '%98', label: 'Takvime Uyum' },
-  { value: '48 Saat', label: 'Ortalama Mobilizasyon' }
+  { value: '48 Saat', label: 'Mobilizasyon Süresi' }
 ]
 
 function HeroSection() {
@@ -20,12 +20,11 @@ function HeroSection() {
         <div className="hero-copy">
           <p className="eyebrow">Portakal Hafriyat</p>
           <h1>
-            Toprağı yalnızca açmıyoruz.
-            <span> Projenin ritmini kuruyoruz.</span>
+            Toprağı açarız.
+            <span> Projenin temposunu kurarız.</span>
           </h1>
           <p>
-            Büyük ölçekli hafriyat operasyonlarında planlama, ekipman ve saha koordinasyonunu tek bir disiplin altında
-            birleştiririz. Sonuç: hızlı başlangıç, kontrollü ilerleme, güvenli teslim.
+            Hafriyat, yıkım ve altyapı hazırlık işlerini tek standartta yönetiriz: net plan, güçlü saha, güvenli teslim.
           </p>
 
           <div className="hero-actions">
@@ -33,36 +32,36 @@ function HeroSection() {
               Teklif Al
             </a>
             <a className="btn btn-outline" href="#projeler">
-              Seçili Projeleri Gör
+              Projeleri İncele
             </a>
           </div>
 
           <div className="hero-signals">
-            <span>Kurumsal raporlama disiplini</span>
-            <span>Yüksek hacimli saha yönetimi</span>
-            <span>Tek muhatap ile net koordinasyon</span>
+            <span>Yüksek hacimli proje kabiliyeti</span>
+            <span>Takvime bağlı uygulama disiplini</span>
+            <span>Tek muhatapla net koordinasyon</span>
           </div>
         </div>
 
         <aside className="hero-stage" aria-label="Operasyon yaklaşımı">
-          <p className="hero-stage-label">Saha Kurgusu</p>
-          <h2>Keşiften teslime tek akış</h2>
+          <p className="hero-stage-label">Operasyon Modeli</p>
+          <h2>Keşiften teslime tek komuta</h2>
           <p>
-            Projenin ilk gününde risk ve kaynak planı çıkarır, uygulama boyunca performansı canlı verilerle yönetiriz.
+            Risk, kaynak ve süre parametrelerini baştan netleştirir; sahada ivmeyi kesmeden yönetiriz.
           </p>
 
           <div className="hero-stage-lines">
             <article>
               <strong>01</strong>
-              <span>Analiz ve Mobilizasyon</span>
+              <span>Analiz</span>
             </article>
             <article>
               <strong>02</strong>
-              <span>Disiplinli Uygulama</span>
+              <span>Uygulama</span>
             </article>
             <article>
               <strong>03</strong>
-              <span>Kontrollü Teslim</span>
+              <span>Teslim</span>
             </article>
           </div>
         </aside>

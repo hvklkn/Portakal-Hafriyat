@@ -3,20 +3,20 @@ import SectionTitle from '../components/SectionTitle'
 
 const highlights = [
   {
-    title: 'Operasyon Netliği',
-    text: 'Saha kararlarını takvime ve üretim hedeflerine göre anlık optimize ederiz.'
+    title: 'Plan Disiplini',
+    text: 'Her etabı takvim ve kaynak doğruluğu ile yürütürüz.'
   },
   {
-    title: 'Teslim Güvencesi',
-    text: 'Kaynak planı ve uygulama sırasını projenin kritik tarihlerini koruyacak şekilde kurarız.'
+    title: 'Saha Komutası',
+    text: 'Kararları sahadaki gerçek verilerle anlık alırız.'
   },
   {
-    title: 'Ölçeklenebilir Ekip',
-    text: 'İhtiyaca göre büyüyebilen ekip yapısıyla farklı etapları eşzamanlı yürütebiliriz.'
+    title: 'Ölçek Kabiliyeti',
+    text: 'Büyük hacimli işlerde aynı kalite çizgisini koruruz.'
   },
   {
-    title: 'Kurumsal İletişim',
-    text: 'Süreç boyunca karar vericilere sade, düzenli ve ölçülebilir ilerleme çıktısı sunarız.'
+    title: 'Net İletişim',
+    text: 'Karar vericilere sade ve ölçülebilir çıktı sunarız.'
   }
 ]
 
@@ -26,19 +26,17 @@ function AboutSection() {
       <div className="container about-layout">
         <div className="about-content">
           <SectionTitle
-            eyebrow="Marka Pozisyonu"
-            title="Ağır saha işlerinde güven duygusu üreten uygulama standardı"
-            description="Portakal Hafriyat; büyük projelerde başlangıç anından teslim gününe kadar belirsizliği azaltan operasyon kültürüyle çalışır."
+            eyebrow="Marka Duruşu"
+            title="Güvenin kaynağı: net plan, kararlı uygulama"
+            description="Portakal Hafriyat, ağır saha işlerinde belirsizliği azaltan ve sonucu öngörülebilir kılan operasyon kültürüyle çalışır."
           />
 
           <p>
-            Bizim için hafriyat, yalnızca ekipman gücü değil; sıra, zaman ve saha kararlarının doğru yönetimidir. Bu
-            nedenle her projeyi teknik yeterlilik kadar yürütme kalitesiyle ele alırız.
+            Bizim için hafriyat, yalnızca güç değil; doğru sıra ve doğru karar hızıdır.
           </p>
 
           <p className="about-emphasis">
-            "Güçlü ekipman kadar güçlü metodoloji." İşimizi bu ilke ile yönetir, projelerinize sürdürülebilir bir tempo
-            kazandırırız.
+            "Sahada güç. Yönetimde sakinlik. Teslimde netlik."
           </p>
         </div>
 
@@ -46,15 +44,15 @@ function AboutSection() {
           <div className="about-kpis">
             <article>
               <strong>120+</strong>
-              <span>Kurumsal İş Ortağı</span>
+              <span>Kurumsal Referans</span>
             </article>
             <article>
               <strong>11 İl</strong>
-              <span>Aktif Operasyon Kabiliyeti</span>
+              <span>Operasyon Coğrafyası</span>
             </article>
             <article>
               <strong>24/7</strong>
-              <span>Proje İletişim Desteği</span>
+              <span>Kesintisiz Koordinasyon</span>
             </article>
           </div>
 

@@ -4,10 +4,9 @@ function ContactSection() {
       <div className="container contact-layout">
         <div className="contact-copy">
           <p className="eyebrow">İletişim</p>
-          <h2>Karar süreçlerini hızlandıran net bir ilk görüşme yapalım.</h2>
+          <h2>Projeyi 15 dakikada çerçeveleyelim.</h2>
           <p>
-            Hafriyat, yıkım ve altyapı hazırlık ihtiyaçlarınızı ekibimize iletin. Projenize uygun kapsamı kısa sürede
-            netleştirip ön operasyon çerçevesini paylaşalım.
+            Talebinizi iletin. Kapsam, takvim ve saha yaklaşımını hızlıca netleştirelim.
           </p>
 
           <dl className="contact-details">
@@ -25,29 +24,24 @@ function ContactSection() {
             </div>
             <div>
               <dt>Operasyon Merkezi</dt>
-              <dd>İstanbul merkezli, Türkiye genelinde proje yürütme kabiliyeti</dd>
+              <dd>İstanbul merkez, Türkiye genelinde saha kabiliyeti</dd>
             </div>
           </dl>
         </div>
 
         <form className="contact-form" onSubmit={(event) => event.preventDefault()}>
-          <h3>Ön Talep Formu</h3>
-          <label htmlFor="company">Firma / Proje Adı</label>
-          <input id="company" name="company" type="text" placeholder="Örn. Lojistik Merkez Zemin Hazırlığı" />
+          <h3>Hızlı Proje Talebi</h3>
+          <label htmlFor="company">Proje / Firma</label>
+          <input id="company" name="company" type="text" placeholder="Örn. Lojistik Merkez Etap 2" />
 
-          <label htmlFor="scope">İş Kapsamı</label>
+          <label htmlFor="scope">Kapsam</label>
           <input id="scope" name="scope" type="text" placeholder="Kazı, yıkım, dolgu, altyapı" />
 
-          <label htmlFor="message">Proje Notu</label>
-          <textarea
-            id="message"
-            name="message"
-            rows="4"
-            placeholder="Saha büyüklüğü, hedef başlangıç tarihi ve özel koşullar"
-          />
+          <label htmlFor="message">Kısa Not</label>
+          <textarea id="message" name="message" rows="4" placeholder="Saha büyüklüğü ve hedef başlangıç tarihi" />
 
           <button className="btn" type="submit">
-            Ön Değerlendirme Al
+            Ön Keşif Talep Et
           </button>
         </form>
       </div>

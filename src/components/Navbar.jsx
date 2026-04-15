@@ -64,7 +64,7 @@ function Navbar() {
           </span>
           <span className="brand-copy">
             <strong>Portakal Hafriyat</strong>
-            <small>Disiplinli Saha Operasyonları</small>
+            <small>Ölçekli Saha Disiplini</small>
           </span>
         </a>
 

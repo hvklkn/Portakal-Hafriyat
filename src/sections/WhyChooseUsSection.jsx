@@ -3,20 +3,20 @@ import SectionTitle from '../components/SectionTitle'
 
 const steps = [
   {
-    title: 'Saha Etüdü',
-    description: 'Proje başlamadan önce zemin, erişim ve risk başlıklarını netleştiririz.'
+    title: 'Ön Keşif',
+    description: 'Zemin, erişim ve risk haritasını baştan netleştiririz.'
   },
   {
     title: 'Operasyon Kurgusu',
-    description: 'Ekipman, ekip ve etap planını tek bir uygulama ritmine dönüştürürüz.'
+    description: 'Ekipman, ekip ve etap planını tek ritimde toplarız.'
   },
   {
-    title: 'Canlı Saha Yönetimi',
-    description: 'İlerlemeyi sahadan gelen verilerle anlık izler, kritik kararları geciktirmeyiz.'
+    title: 'Saha İcrası',
+    description: 'Süreçte kritik kararları geciktirmeden uygularız.'
   },
   {
-    title: 'Kurumsal Teslim',
-    description: 'İşin sonunda yalnızca sahayı değil, sürecin tamamını raporlanmış şekilde teslim ederiz.'
+    title: 'Raporlu Teslim',
+    description: 'Sahayı ve süreci ölçülebilir çıktıyla teslim ederiz.'
   }
 ]
 
@@ -26,13 +26,12 @@ function WhyChooseUsSection() {
       <div className="container process-layout">
         <div className="process-intro">
           <SectionTitle
-            eyebrow="Çalışma Metodumuz"
-            title="Öngörülebilir süreç, güçlü sonuç"
-            description="Belirsizliği azaltan dört adımlı modelimiz, büyük ölçekli operasyonları yönetilebilir hale getirir."
+            eyebrow="Çalışma Rutini"
+            title="Dört adım. Tek standart."
+            description="Süreç sade, sonuç öngörülebilir."
           />
           <p>
-            Bu yaklaşım sayesinde proje sahipleri, sahada ne zaman ne olacağını net bilir; ekipler ise aynı hedefte
-            hizalanır.
+            Proje ekiplerine görünürlük, sahaya kararlı bir tempo kazandırırız.
           </p>
         </div>
 

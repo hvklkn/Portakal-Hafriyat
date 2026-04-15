@@ -3,29 +3,29 @@ import SectionTitle from '../components/SectionTitle'
 
 const projects = [
   {
-    title: 'Kuzey Marmara Lojistik Üssü Zemin Operasyonu',
+    title: 'Kuzey Marmara Lojistik Üssü | Ana Zemin Etabı',
     location: 'İstanbul',
     year: '2025',
-    scope: '120.000 m² alanda etaplı kazı, dolgu ve ağır araç trafiği için ana saha omurgası oluşturuldu.',
+    scope: '120.000 m² alanda etaplı kazı ve dolgu ile operasyon omurgası kuruldu.',
     className: 'featured'
   },
   {
-    title: 'Gebze Endüstriyel Dönüşüm Saha Açılımı',
+    title: 'Gebze Endüstriyel Dönüşüm | Saha Açılımı',
     location: 'Kocaeli',
     year: '2024',
-    scope: 'Yıkım sonrası yeni üretim hattı kurulumuna uygun, takvim odaklı saha dönüşümü tamamlandı.'
+    scope: 'Yeni üretim hattı için yıkım sonrası saha, takvime bağlı şekilde hazırlandı.'
   },
   {
-    title: 'Bursa Üretim Kampüsü Altyapı Hazırlığı',
+    title: 'Bursa Üretim Kampüsü | Altyapı Hazırlığı',
     location: 'Bursa',
     year: '2024',
-    scope: 'Mevcut operasyonu kesmeden genişleme alanlarında paralel hafriyat yönetimi yürütüldü.'
+    scope: 'Genişleme etaplarında mevcut üretimi kesmeden paralel hafriyat yürütüldü.'
   },
   {
-    title: 'Ankara Karma Proje Stabilizasyon Etabı',
+    title: 'Ankara Karma Proje | Stabilizasyon Etabı',
     location: 'Ankara',
     year: '2023',
-    scope: 'Çok etaplı projede yüksek hacimli kazı ve zemin hazırlık süreci kontrollü tempoda tamamlandı.'
+    scope: 'Çok etaplı projede yüksek hacimli kazı süreci kontrollü tempoda tamamlandı.'
   }
 ]
 
@@ -34,9 +34,9 @@ function ProjectsSection() {
     <section id="projeler" className="section projects-scene">
       <div className="container">
         <SectionTitle
-          eyebrow="Seçili İşler"
-          title="Prestijli projelerde sahayı zamanla yarışmadan yönettik"
-          description="Farklı şehirler, farklı zeminler, aynı kalite çizgisi: planlı uygulama ve net teslim."
+          eyebrow="Referans Projeler"
+          title="Yüksek ölçekli işlerde kanıtlanmış icra gücü"
+          description="Farklı şehirler, aynı sonuç: kontrollü tempo, temiz teslim."
         />
 
         <div className="projects-showcase">
