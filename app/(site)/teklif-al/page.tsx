@@ -6,11 +6,22 @@ import { EnhancedQuoteForm } from "@/components/sections/enhanced-quote-form";
 import { PageHero } from "@/components/sections/page-hero";
 import { Card, CardContent } from "@/components/ui/card";
 import { getPublicServices } from "@/lib/public-content";
+import { createPageMetadata } from "@/lib/seo";
 import { getSiteSettings } from "@/lib/site-settings";
 
-export const metadata: Metadata = {
-  title: "Hızlı Teklif Al"
-};
+const pageDescription =
+  "İşin türünü, konumunu ve ihtiyacınızı paylaşın; en kısa sürede size dönüş yapalım.";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
+
+  return createPageMetadata({
+    settings,
+    title: "Hızlı Teklif Al",
+    description: pageDescription,
+    path: "/teklif-al"
+  });
+}
 
 const benefits = [
   "Yerinde keşif planı",
@@ -30,7 +41,7 @@ export default async function QuotePage() {
       <PageHero
         eyebrow="Teklif"
         title="Hızlı Teklif Al"
-        description="İşin türünü, konumunu ve ihtiyacınızı paylaşın; en kısa sürede size dönüş yapalım."
+        description={pageDescription}
         breadcrumbs={[
           { label: "Ana Sayfa", href: "/" },
           { label: "Teklif Al" }

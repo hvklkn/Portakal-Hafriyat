@@ -6,11 +6,22 @@ import { QuoteCTA } from "@/components/sections/quote-cta";
 import { ServiceCard } from "@/components/sections/service-card";
 import { EmptyState } from "@/components/ui/empty-state";
 import { getPublicServices } from "@/lib/public-content";
+import { createPageMetadata } from "@/lib/seo";
 import { getSiteSettings } from "@/lib/site-settings";
 
-export const metadata: Metadata = {
-  title: "Hafriyat Hizmetlerimiz"
-};
+const pageDescription =
+  "Temel kazısından moloz taşımaya, dolgu işlerinden arazi düzenlemeye kadar ihtiyaçlarınıza uygun profesyonel çözümler sunuyoruz.";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
+
+  return createPageMetadata({
+    settings,
+    title: "Hafriyat Hizmetlerimiz",
+    description: pageDescription,
+    path: "/hizmetler"
+  });
+}
 
 export default async function ServicesPage() {
   const [services, settings] = await Promise.all([
@@ -23,7 +34,7 @@ export default async function ServicesPage() {
       <PageHero
         eyebrow="Hizmetler"
         title="Hafriyat Hizmetlerimiz"
-        description="Temel kazısından moloz taşımaya, dolgu işlerinden arazi düzenlemeye kadar ihtiyaçlarınıza uygun profesyonel çözümler sunuyoruz."
+        description={pageDescription}
         breadcrumbs={[
           { label: "Ana Sayfa", href: "/" },
           { label: "Hizmetler" }

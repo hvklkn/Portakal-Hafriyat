@@ -14,6 +14,7 @@ import {
   getPublicProjectBySlug,
   getSimilarProjects
 } from "@/lib/public-content";
+import { createPageMetadata } from "@/lib/seo";
 import { getSiteSettings } from "@/lib/site-settings";
 
 type ProjectDetailPageProps = {
@@ -24,18 +25,28 @@ export async function generateMetadata({
   params
 }: ProjectDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const { project } = await getPublicProjectBySlug(slug);
+  const [{ project }, settings] = await Promise.all([
+    getPublicProjectBySlug(slug),
+    getSiteSettings()
+  ]);
 
   if (!project) {
     return {
-      title: "Proje bulunamadı"
+      title: "Proje bulunamadı",
+      robots: {
+        index: false,
+        follow: false
+      }
     };
   }
 
-  return {
+  return createPageMetadata({
+    settings,
     title: project.title,
-    description: project.summary
-  };
+    description: project.summary,
+    path: `/projeler/${project.slug}`,
+    image: project.imageUrl
+  });
 }
 
 export default async function ProjectDetailPage({

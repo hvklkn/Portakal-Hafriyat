@@ -7,11 +7,22 @@ import { ContactInfoCard } from "@/components/sections/contact-info-card";
 import { PageHero } from "@/components/sections/page-hero";
 import { Card, CardContent } from "@/components/ui/card";
 import { getPhoneHref, getWhatsAppHref } from "@/lib/contact-links";
+import { createPageMetadata } from "@/lib/seo";
 import { getSiteSettings } from "@/lib/site-settings";
 
-export const metadata: Metadata = {
-  title: "İletişim"
-};
+const pageDescription =
+  "Hafriyat ve iş makinesi ihtiyaçlarınız için bizimle iletişime geçin.";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
+
+  return createPageMetadata({
+    settings,
+    title: "İletişim",
+    description: pageDescription,
+    path: "/iletisim"
+  });
+}
 
 export default async function ContactPage() {
   const settings = await getSiteSettings();
@@ -26,7 +37,7 @@ export default async function ContactPage() {
       <PageHero
         eyebrow="İletişim"
         title="İletişim"
-        description="Hafriyat ve iş makinesi ihtiyaçlarınız için bizimle iletişime geçin."
+        description={pageDescription}
         breadcrumbs={[
           { label: "Ana Sayfa", href: "/" },
           { label: "İletişim" }

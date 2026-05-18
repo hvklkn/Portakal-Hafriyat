@@ -33,6 +33,11 @@ export type PublicGalleryImage = {
   alt: string;
 };
 
+export type PublicSitemapEntry = {
+  slug: string;
+  updatedAt: Date;
+};
+
 const fallbackServices: PublicService[] = services.map((service) => ({
   title: service.title,
   slug: service.slug,
@@ -271,4 +276,72 @@ export async function getSimilarProjects(currentSlug: string) {
   const projects = await getPublicProjects();
 
   return projects.filter((project) => project.slug !== currentSlug).slice(0, 3);
+}
+
+export async function getPublicServiceSitemapEntries(): Promise<
+  PublicSitemapEntry[]
+> {
+  if (!process.env.DATABASE_URL) {
+    return services.map((service) => ({
+      slug: service.slug,
+      updatedAt: new Date()
+    }));
+  }
+
+  try {
+    const dbServices = await prisma.service.findMany({
+      where: { isPublished: true },
+      orderBy: [{ sortOrder: "asc" }, { updatedAt: "desc" }],
+      select: {
+        slug: true,
+        updatedAt: true
+      }
+    });
+
+    return dbServices.length > 0
+      ? dbServices
+      : services.map((service) => ({
+          slug: service.slug,
+          updatedAt: new Date()
+        }));
+  } catch {
+    return services.map((service) => ({
+      slug: service.slug,
+      updatedAt: new Date()
+    }));
+  }
+}
+
+export async function getPublicProjectSitemapEntries(): Promise<
+  PublicSitemapEntry[]
+> {
+  if (!process.env.DATABASE_URL) {
+    return projectSamples.map((project) => ({
+      slug: project.slug,
+      updatedAt: new Date()
+    }));
+  }
+
+  try {
+    const dbProjects = await prisma.project.findMany({
+      where: { isPublished: true },
+      orderBy: [{ updatedAt: "desc" }],
+      select: {
+        slug: true,
+        updatedAt: true
+      }
+    });
+
+    return dbProjects.length > 0
+      ? dbProjects
+      : projectSamples.map((project) => ({
+          slug: project.slug,
+          updatedAt: new Date()
+        }));
+  } catch {
+    return projectSamples.map((project) => ({
+      slug: project.slug,
+      updatedAt: new Date()
+    }));
+  }
 }

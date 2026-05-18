@@ -5,10 +5,22 @@ import { GalleryGrid } from "@/components/sections/gallery-grid";
 import { PageHero } from "@/components/sections/page-hero";
 import { EmptyState } from "@/components/ui/empty-state";
 import { getPublicGalleryImages } from "@/lib/public-content";
+import { createPageMetadata } from "@/lib/seo";
+import { getSiteSettings } from "@/lib/site-settings";
 
-export const metadata: Metadata = {
-  title: "Saha Galerisi"
-};
+const pageDescription =
+  "Tamamlanan işler, makine parkı ve saha çalışmalarından görüntüler.";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
+
+  return createPageMetadata({
+    settings,
+    title: "Saha Galerisi",
+    description: pageDescription,
+    path: "/galeri"
+  });
+}
 
 export default async function GalleryPage() {
   const images = await getPublicGalleryImages();
@@ -18,7 +30,7 @@ export default async function GalleryPage() {
       <PageHero
         eyebrow="Galeri"
         title="Saha Galerisi"
-        description="Tamamlanan işler, makine parkı ve saha çalışmalarından görüntüler."
+        description={pageDescription}
         breadcrumbs={[
           { label: "Ana Sayfa", href: "/" },
           { label: "Galeri" }

@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getPhoneHref, getWhatsAppHref } from "@/lib/contact-links";
 import { getPublicServiceBySlug } from "@/lib/public-content";
+import { createPageMetadata } from "@/lib/seo";
 import { getSiteSettings } from "@/lib/site-settings";
 
 type ServiceDetailPageProps = {
@@ -27,18 +28,28 @@ export async function generateMetadata({
   params
 }: ServiceDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const service = await getPublicServiceBySlug(slug);
+  const [service, settings] = await Promise.all([
+    getPublicServiceBySlug(slug),
+    getSiteSettings()
+  ]);
 
   if (!service) {
     return {
-      title: "Hizmet bulunamadı"
+      title: "Hizmet bulunamadı",
+      robots: {
+        index: false,
+        follow: false
+      }
     };
   }
 
-  return {
+  return createPageMetadata({
+    settings,
     title: service.title,
-    description: service.summary
-  };
+    description: service.summary,
+    path: `/hizmetler/${service.slug}`,
+    image: service.imageUrl
+  });
 }
 
 export default async function ServiceDetailPage({

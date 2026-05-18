@@ -1,21 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import { createRootMetadata } from "@/lib/seo";
 import { getSiteSettings } from "@/lib/site-settings";
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
 
-  return {
-    title: {
-      default: settings.companyName,
-      template: `%s | ${settings.companyName}`
-    },
-    description: settings.description,
-    metadataBase: new URL(
-      process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
-    )
-  };
+  return createRootMetadata(settings);
 }
 
 export default function RootLayout({

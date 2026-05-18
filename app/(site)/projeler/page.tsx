@@ -8,10 +8,22 @@ import { ProjectCard } from "@/components/sections/project-card";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { getPublicProjects } from "@/lib/public-content";
+import { createPageMetadata } from "@/lib/seo";
+import { getSiteSettings } from "@/lib/site-settings";
 
-export const metadata: Metadata = {
-  title: "Tamamlanan İşler"
-};
+const pageDescription =
+  "Sahada tamamladığımız hafriyat, moloz taşıma ve arazi düzenleme çalışmalarından örnekler.";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
+
+  return createPageMetadata({
+    settings,
+    title: "Tamamlanan İşler",
+    description: pageDescription,
+    path: "/projeler"
+  });
+}
 
 export default async function ProjectsPage() {
   const projects = await getPublicProjects();
@@ -21,7 +33,7 @@ export default async function ProjectsPage() {
       <PageHero
         eyebrow="Projeler"
         title="Tamamlanan İşler"
-        description="Sahada tamamladığımız hafriyat, moloz taşıma ve arazi düzenleme çalışmalarından örnekler."
+        description={pageDescription}
         breadcrumbs={[
           { label: "Ana Sayfa", href: "/" },
           { label: "Projeler" }
