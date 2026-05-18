@@ -2,16 +2,40 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 
 import { prisma } from "@/lib/prisma";
+import {
+  consumeRateLimit,
+  createRateLimitKey
+} from "@/lib/rate-limit";
 
 const contactSchema = z.object({
-  fullName: z.string().min(2),
-  phone: z.string().optional(),
-  email: z.string().email(),
-  subject: z.string().optional(),
-  message: z.string().min(10)
+  fullName: z.string().trim().min(2).max(100),
+  phone: z.string().trim().max(30).optional(),
+  email: z.string().trim().email().max(160),
+  subject: z.string().trim().max(160).optional(),
+  message: z.string().trim().min(10).max(2000),
+  companyWebsite: z.string().max(1000).optional()
 });
 
 export async function POST(request: Request) {
+  const rateLimit = consumeRateLimit({
+    key: createRateLimitKey(request, "public-contact"),
+    limit: 5,
+    windowMs: 10 * 60 * 1000
+  });
+
+  if (!rateLimit.success) {
+    return NextResponse.json(
+      {
+        message:
+          "Çok kısa sürede fazla mesaj gönderildi. Lütfen birkaç dakika sonra tekrar deneyin."
+      },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rateLimit.retryAfter) }
+      }
+    );
+  }
+
   const body = await request.json().catch(() => null);
   const parsed = contactSchema.safeParse(body);
 
@@ -20,6 +44,10 @@ export async function POST(request: Request) {
       { message: "Lütfen form alanlarını kontrol edin." },
       { status: 422 }
     );
+  }
+
+  if (parsed.data.companyWebsite?.trim()) {
+    return NextResponse.json({ ok: true });
   }
 
   if (!process.env.DATABASE_URL) {

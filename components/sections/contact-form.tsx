@@ -12,11 +12,32 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
 const contactSchema = z.object({
-  fullName: z.string().min(2, "Ad soyad en az 2 karakter olmalı."),
-  phone: z.string().optional(),
-  email: z.string().email("Geçerli bir e-posta girin."),
-  subject: z.string().optional(),
-  message: z.string().min(10, "Mesaj en az 10 karakter olmalı.")
+  fullName: z
+    .string()
+    .trim()
+    .min(2, "Ad soyad en az 2 karakter olmalı.")
+    .max(100, "Ad soyad en fazla 100 karakter olabilir."),
+  phone: z
+    .string()
+    .trim()
+    .max(30, "Telefon en fazla 30 karakter olabilir.")
+    .optional(),
+  email: z
+    .string()
+    .trim()
+    .email("Geçerli bir e-posta girin.")
+    .max(160, "E-posta en fazla 160 karakter olabilir."),
+  subject: z
+    .string()
+    .trim()
+    .max(160, "Konu en fazla 160 karakter olabilir.")
+    .optional(),
+  message: z
+    .string()
+    .trim()
+    .min(10, "Mesaj en az 10 karakter olmalı.")
+    .max(2000, "Mesaj en fazla 2000 karakter olabilir."),
+  companyWebsite: z.string().max(1000).optional()
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -38,7 +59,8 @@ export function ContactForm() {
       phone: "",
       email: "",
       subject: "",
-      message: ""
+      message: "",
+      companyWebsite: ""
     }
   });
 
@@ -69,7 +91,20 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="grid gap-5">
+    <form onSubmit={handleSubmit(onSubmit)} className="relative grid gap-5">
+      <div
+        className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden"
+        aria-hidden="true"
+      >
+        <label htmlFor="contact-company-website">Website</label>
+        <input
+          id="contact-company-website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          {...register("companyWebsite")}
+        />
+      </div>
       <div className="grid gap-5 md:grid-cols-2">
         <Field label="Ad Soyad" error={errors.fullName?.message}>
           <Input placeholder="Adınız soyadınız" {...register("fullName")} />

@@ -1,6 +1,6 @@
 import "server-only";
 
-import { createHash } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 
 type CloudinaryUploadResponse = {
   secure_url?: string;
@@ -42,9 +42,11 @@ export async function uploadImageToCloudinary(
 
   const timestamp = Math.floor(Date.now() / 1000).toString();
   const folder = "portakal-hafriyat/admin";
+  const publicId = createSafePublicId(file.name);
   const signature = createCloudinarySignature(
     {
       folder,
+      public_id: publicId,
       timestamp
     },
     config.apiSecret
@@ -54,6 +56,7 @@ export async function uploadImageToCloudinary(
   formData.append("api_key", config.apiKey);
   formData.append("timestamp", timestamp);
   formData.append("folder", folder);
+  formData.append("public_id", publicId);
   formData.append("signature", signature);
 
   const response = await fetch(
@@ -75,6 +78,21 @@ export async function uploadImageToCloudinary(
     secureUrl: data.secure_url,
     publicId: data.public_id ?? null
   };
+}
+
+function createSafePublicId(fileName: string) {
+  const baseName = fileName
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\.[^/.]+$/, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80);
+  const safeName = baseName || "image";
+  const suffix = randomUUID().replaceAll("-", "").slice(0, 12);
+
+  return `${safeName}-${suffix}`;
 }
 
 function createCloudinarySignature(

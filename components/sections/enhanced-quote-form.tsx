@@ -13,13 +13,44 @@ import { Textarea } from "@/components/ui/textarea";
 import { getWhatsAppHref } from "@/lib/contact-links";
 
 const quoteSchema = z.object({
-  fullName: z.string().min(2, "Ad soyad en az 2 karakter olmalı."),
-  phone: z.string().min(10, "Telefon numarası eksik görünüyor."),
-  serviceType: z.string().min(2, "Hizmet türü seçin."),
-  city: z.string().min(2, "Şehir gerekli."),
-  district: z.string().min(2, "İlçe gerekli."),
-  description: z.string().min(10, "Açıklama en az 10 karakter olmalı."),
-  imageUrl: z.string().url("Geçerli bir URL girin.").optional().or(z.literal(""))
+  fullName: z
+    .string()
+    .trim()
+    .min(2, "Ad soyad en az 2 karakter olmalı.")
+    .max(100, "Ad soyad en fazla 100 karakter olabilir."),
+  phone: z
+    .string()
+    .trim()
+    .min(10, "Telefon numarası eksik görünüyor.")
+    .max(30, "Telefon en fazla 30 karakter olabilir."),
+  serviceType: z
+    .string()
+    .trim()
+    .min(2, "Hizmet türü seçin.")
+    .max(120, "Hizmet türü en fazla 120 karakter olabilir."),
+  city: z
+    .string()
+    .trim()
+    .min(2, "Şehir gerekli.")
+    .max(80, "Şehir en fazla 80 karakter olabilir."),
+  district: z
+    .string()
+    .trim()
+    .min(2, "İlçe gerekli.")
+    .max(80, "İlçe en fazla 80 karakter olabilir."),
+  description: z
+    .string()
+    .trim()
+    .min(10, "Açıklama en az 10 karakter olmalı.")
+    .max(2000, "Açıklama en fazla 2000 karakter olabilir."),
+  imageUrl: z
+    .string()
+    .trim()
+    .max(1000, "Görsel URL en fazla 1000 karakter olabilir.")
+    .url("Geçerli bir URL girin.")
+    .optional()
+    .or(z.literal("")),
+  companyWebsite: z.string().max(1000).optional()
 });
 
 type QuoteFormValues = z.infer<typeof quoteSchema>;
@@ -54,7 +85,8 @@ export function EnhancedQuoteForm({
       city: "",
       district: "",
       description: "",
-      imageUrl: ""
+      imageUrl: "",
+      companyWebsite: ""
     }
   });
 
@@ -92,7 +124,8 @@ export function EnhancedQuoteForm({
       city: "",
       district: "",
       description: "",
-      imageUrl: ""
+      imageUrl: "",
+      companyWebsite: ""
     });
   }
 
@@ -104,7 +137,20 @@ export function EnhancedQuoteForm({
     : null;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="grid gap-5">
+    <form onSubmit={handleSubmit(onSubmit)} className="relative grid gap-5">
+      <div
+        className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden"
+        aria-hidden="true"
+      >
+        <label htmlFor="quote-company-website">Website</label>
+        <input
+          id="quote-company-website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          {...register("companyWebsite")}
+        />
+      </div>
       <div className="grid gap-5 md:grid-cols-2">
         <Field label="Ad Soyad" error={errors.fullName?.message}>
           <Input placeholder="Adınız soyadınız" {...register("fullName")} />

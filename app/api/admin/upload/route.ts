@@ -5,6 +5,10 @@ import {
   isCloudinaryConfigured,
   uploadImageToCloudinary
 } from "@/lib/cloudinary";
+import {
+  consumeRateLimit,
+  createRateLimitKey
+} from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -17,6 +21,25 @@ export async function POST(request: Request) {
     return NextResponse.json(
       { message: "Bu islem icin admin oturumu gerekli." },
       { status: 401 }
+    );
+  }
+
+  const rateLimit = consumeRateLimit({
+    key: createRateLimitKey(request, "admin-upload"),
+    limit: 20,
+    windowMs: 10 * 60 * 1000
+  });
+
+  if (!rateLimit.success) {
+    return NextResponse.json(
+      {
+        message:
+          "Çok kısa sürede fazla görsel yükleme denendi. Lütfen birkaç dakika sonra tekrar deneyin."
+      },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rateLimit.retryAfter) }
+      }
     );
   }
 

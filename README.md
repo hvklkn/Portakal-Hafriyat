@@ -45,6 +45,14 @@ CLOUDINARY_API_SECRET=""
 
 Bu değerler tanımlı değilse admin formlarında manuel URL girişi çalışmaya devam eder; dosya yükleme denemesinde kullanıcıya yapılandırma hatası gösterilir. `CLOUDINARY_API_SECRET` sadece server-side upload API tarafından kullanılır, client bundle’a gönderilmez.
 
+## Güvenlik Notları
+
+- Admin login, public teklif/iletişim formları ve admin görsel yükleme endpointi IP bazlı in-memory rate limit ile korunur. Bu koruma Vercel/serverless ortamında kalıcı değildir; yüksek trafikli production ortamında Redis veya Upstash gibi merkezi bir store ile değiştirilmelidir.
+- Public iletişim ve teklif formlarında görünmeyen honeypot alanı bulunur. Normal kullanıcı deneyimini etkilemez, bot gönderimlerini veritabanına yazmadan süzer.
+- `JWT_SECRET`, `ADMIN_SEED_PASSWORD`, Neon/PostgreSQL bağlantı bilgileri ve Cloudinary secret değerleri asla repoya commitlenmemelidir. Production ortamında güçlü ve benzersiz değerler kullanılmalıdır.
+- Admin session cookie değeri `httpOnly`, `sameSite=lax`, `path=/` olarak set edilir; production ortamında `secure=true` çalışır.
+- Temel güvenlik header’ları Next.js config üzerinden eklenir: frame engelleme, MIME sniffing koruması, referrer policy ve kısıtlı permissions policy.
+
 ## Scriptler
 
 - `npm run dev`
