@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  name         String?
+  passwordHash String
+  role         String    @default("admin")
+  isActive     Boolean   @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model SiteSetting {
+  id             String   @id @default("site_settings")
+  singletonKey   Int      @unique @default(1)
+  companyName    String
+  slogan         String?
+  description    String
+  phone          String
+  whatsapp       String?
+  email          String
+  address        String
+  googleMapsUrl  String?
+  instagramUrl   String?
+  facebookUrl    String?
+  heroTitle      String?
+  heroSubtitle   String?
+  heroImageUrl   String?
+  seoTitle       String?
+  seoDescription String?
+  logoUrl        String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  summary     String
+  description String
+  icon        String?
+  imageUrl    String?
+  sortOrder   Int      @default(0)
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Project {
+  id            String         @id @default(cuid())
+  title         String
+  slug          String         @unique
+  location      String?
+  district      String?
+  category      String?
+  year          String?
+  summary       String
+  description   String?
+  imageUrl      String?
+  status        ProjectStatus  @default(PLANNED)
+  isFeatured    Boolean        @default(false)
+  isPublished   Boolean        @default(true)
+  galleryImages GalleryImage[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model GalleryImage {
+  id        String   @id @default(cuid())
+  title     String
+  slug      String   @unique
+  alt       String?
+  imageUrl  String
+  publicId  String?
+  provider  String   @default("local")
+  sortOrder Int      @default(0)
+  projectId String?
+  project   Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model QuoteRequest {
+  id          String             @id @default(cuid())
+  name        String
+  phone       String
+  email       String?
+  location    String
+  serviceType String
+  message     String
+  status      QuoteRequestStatus @default(NEW)
+  notes       String?
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+}
+
+model ContactMessage {
+  id        String    @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String
+  isRead    Boolean   @default(false)
+  readAt    DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+enum QuoteRequestStatus {
+  NEW
+  CONTACTED
+  PRICED
+  COMPLETED
+  CANCELLED
+}
+
+enum ProjectStatus {
+  PLANNED
+  IN_PROGRESS
+  COMPLETED
+}
