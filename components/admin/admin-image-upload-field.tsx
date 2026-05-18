@@ -41,33 +41,47 @@ export function AdminImageUploadField({
       return;
     }
 
-    setIsUploading(true);
-    const formData = new FormData();
-    formData.append("file", file);
+    try {
+      setIsUploading(true);
+      const formData = new FormData();
+      formData.append("file", file);
 
-    const response = await fetch("/api/admin/upload", {
-      method: "POST",
-      body: formData
-    });
-    const data = (await response.json().catch(() => null)) as {
-      url?: string;
-      message?: string;
-    } | null;
-    setIsUploading(false);
+      const response = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: formData
+      });
+      const data = (await response.json().catch(() => null)) as {
+        secure_url?: string;
+        url?: string;
+        message?: string;
+      } | null;
+      const uploadedUrl = data?.secure_url ?? data?.url;
 
-    if (!response.ok || !data?.url) {
+      if (!response.ok || !uploadedUrl) {
+        setUploadError(
+          data?.message ??
+            "Gorsel yuklenemedi. Manuel URL girerek devam edebilirsiniz."
+        );
+        return;
+      }
+
+      onChange(uploadedUrl);
+
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    } catch {
       setUploadError(
-        data?.message ??
-          "Gorsel yuklenemedi. Manuel URL girerek devam edebilirsiniz."
+        "Gorsel yuklenemedi. Baglantiyi kontrol edin veya manuel URL girin."
       );
-      return;
+    } finally {
+      setIsUploading(false);
     }
+  }
 
-    onChange(data.url);
-
-    if (fileInputRef.current) {
-      fileInputRef.current.value = "";
-    }
+  function handleManualChange(nextValue: string) {
+    setUploadError(null);
+    onChange(nextValue);
   }
 
   return (
@@ -91,7 +105,7 @@ export function AdminImageUploadField({
               variant="outline"
               size="sm"
               disabled={isUploading}
-              onClick={() => onChange("")}
+              onClick={() => handleManualChange("")}
             >
               <Trash2 />
               Temizle
@@ -117,7 +131,7 @@ export function AdminImageUploadField({
           value={value}
           placeholder={placeholder}
           disabled={isUploading}
-          onChange={(event) => onChange(event.target.value)}
+          onChange={(event) => handleManualChange(event.target.value)}
         />
         <Button
           type="button"
